@@ -29,6 +29,8 @@ export default function ProjectSection({
               (e) => e.sectionId === project.id
             );
             const isOpen = openExpansionId === project.id;
+            const triggerId = `trigger-${project.id}`;
+            const contentId = `content-${project.id}`;
 
             return (
               <div key={project.id}>
@@ -53,12 +55,16 @@ export default function ProjectSection({
                       question={expansion.trigger}
                       isOpen={isOpen}
                       onClick={() => onExpansionToggle(project.id)}
+                      triggerId={triggerId}
+                      contentId={contentId}
                     />
                     <ExpansionCard
                       content={expansion.content}
                       isOpen={isOpen}
                       bridgeToChatPrompt={expansion.bridgeToChatPrompt}
                       onBridgeClick={onBridgeClick}
+                      contentId={contentId}
+                      triggerId={triggerId}
                     />
                   </div>
                 )}

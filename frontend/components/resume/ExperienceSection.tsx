@@ -27,6 +27,8 @@ export default function ExperienceSection({
           {experience.map((exp) => {
             const expansion = expansions.find((e) => e.sectionId === exp.id);
             const isOpen = openExpansionId === exp.id;
+            const triggerId = `trigger-${exp.id}`;
+            const contentId = `content-${exp.id}`;
 
             return (
               <div key={exp.id}>
@@ -51,12 +53,16 @@ export default function ExperienceSection({
                       question={expansion.trigger}
                       isOpen={isOpen}
                       onClick={() => onExpansionToggle(exp.id)}
+                      triggerId={triggerId}
+                      contentId={contentId}
                     />
                     <ExpansionCard
                       content={expansion.content}
                       isOpen={isOpen}
                       bridgeToChatPrompt={expansion.bridgeToChatPrompt}
                       onBridgeClick={onBridgeClick}
+                      contentId={contentId}
+                      triggerId={triggerId}
                     />
                   </div>
                 )}

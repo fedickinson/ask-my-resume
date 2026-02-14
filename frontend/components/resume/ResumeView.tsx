@@ -18,6 +18,18 @@ export default function ResumeView({ data, onViewChange }: ResumeViewProps) {
   const [openExpansionId, setOpenExpansionId] = useState<string | null>(null);
   const [expansionCount, setExpansionCount] = useState(0);
 
+  // Close expansion on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && openExpansionId) {
+        setOpenExpansionId(null);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [openExpansionId]);
+
   const handleExpansionToggle = (id: string) => {
     if (openExpansionId === id) {
       setOpenExpansionId(null);
