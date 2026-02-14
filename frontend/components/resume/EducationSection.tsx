@@ -13,28 +13,28 @@ export default function EducationSection({
       <SectionHeader title="EDUCATION" />
       <div className="space-y-3">
         {education.map((edu) => (
-          <div key={edu.id}>
-            <div className="flex justify-between items-baseline">
-              <span className="font-bold text-base">{edu.institution}</span>
-              <span className="text-sm text-gray-600">{edu.location}</span>
+          <div key={edu.id} className="mb-3">
+            <div className="flex justify-between items-start gap-4">
+              <span className="font-extrabold text-[15px]">{edu.institution}</span>
+              <span className="text-[13px] text-gray-500 shrink-0">{edu.location}</span>
             </div>
-            <div className="flex justify-between items-baseline text-sm mt-0.5">
-              <div>
-                <span className="font-medium">{edu.degree}</span>
+            <div className="flex justify-between items-start text-[13px] mt-0.5 gap-4">
+              <div className="flex-1">
+                {edu.degree}
                 {edu.certificate && (
-                  <span className="text-gray-700"> – {edu.certificate}</span>
+                  <> – <span className="italic">{edu.certificate}</span></>
                 )}
               </div>
-              <span className="text-gray-600 font-medium">{edu.graduationDate}</span>
+              <span className="text-gray-500 shrink-0">{edu.graduationDate}</span>
             </div>
             {edu.gpa && (
-              <div className="text-sm text-gray-600 mt-0.5">
-                GPA: <span className="font-medium">{edu.gpa}</span>
+              <div className="text-[13px] text-gray-600 mt-0.5">
+                GPA: {edu.gpa}
               </div>
             )}
             {edu.coursework && (
-              <div className="text-sm text-gray-600 mt-1">
-                <span className="text-gray-500">Relevant Coursework:</span> {edu.coursework}
+              <div className="text-[13px] text-gray-600 mt-1 leading-relaxed">
+                Relevant Coursework: {edu.coursework}
               </div>
             )}
           </div>

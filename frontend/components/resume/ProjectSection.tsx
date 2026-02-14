@@ -33,19 +33,19 @@ export default function ProjectSection({
             const contentId = `content-${project.id}`;
 
             return (
-              <div key={project.id}>
-                <div className="flex justify-between items-baseline">
-                  <span className="font-bold text-base">{project.name}</span>
-                  <span className="text-sm text-gray-600 font-medium whitespace-nowrap ml-4">{project.dates}</span>
+              <div key={project.id} className="mb-4">
+                <div className="flex justify-between items-start gap-4">
+                  <span className="font-extrabold text-[15px]">{project.name}</span>
+                  <span className="text-[13px] text-gray-500 shrink-0">{project.dates}</span>
                 </div>
-                <div className="text-sm text-gray-600 italic mt-0.5 mb-2">
+                <div className="text-[13px] text-gray-600 italic mt-0.5 mb-2">
                   {project.description}
                 </div>
-                <ul className="list-none space-y-1.5 text-sm">
+                <ul className="list-none space-y-2 text-[13px]">
                   {project.bullets.map((bullet) => (
                     <li key={bullet.id} className="flex leading-relaxed">
-                      <span className="mr-2 text-gray-400">•</span>
-                      <span className="text-gray-700">{bullet.text}</span>
+                      <span className="mr-2.5 text-gray-400 shrink-0 mt-0.5">•</span>
+                      <span className="text-gray-800">{bullet.text}</span>
                     </li>
                   ))}
                 </ul>
