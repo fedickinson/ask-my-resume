@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import ChatHeader from './ChatHeader';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
@@ -132,22 +133,40 @@ export default function ChatView({
 
       <div className="flex-1 overflow-y-auto px-4 py-6">
         <div className="max-w-3xl mx-auto">
-          {messages.length === 0 && (
+          {messages.length === 0 && !initialPrompt && (
             <>
-              <ChatMessage role="assistant" content={welcomeMessage} />
-              <SuggestedPrompts
-                prompts={chatConfig.suggestedPrompts}
-                onPromptClick={handleSend}
-              />
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+              >
+                <ChatMessage role="assistant" content={welcomeMessage} />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.4 }}
+              >
+                <SuggestedPrompts
+                  prompts={chatConfig.suggestedPrompts}
+                  onPromptClick={handleSend}
+                />
+              </motion.div>
             </>
           )}
 
-          {messages.map((message) => (
-            <ChatMessage
+          {messages.map((message, index) => (
+            <motion.div
               key={message.id}
-              role={message.role}
-              content={message.content}
-            />
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ChatMessage
+                role={message.role}
+                content={message.content}
+              />
+            </motion.div>
           ))}
 
           {isLoading && <TypingIndicator />}
@@ -156,7 +175,13 @@ export default function ChatView({
         </div>
       </div>
 
-      <ChatInput onSend={handleSend} disabled={isLoading} />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <ChatInput onSend={handleSend} disabled={isLoading} />
+      </motion.div>
     </div>
   );
 }

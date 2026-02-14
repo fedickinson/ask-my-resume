@@ -42,7 +42,21 @@ export default function ResumeView({ data, onViewChange }: ResumeViewProps) {
   };
 
   const handleBridgeClick = (prompt: string) => {
-    onViewChange(prompt);
+    // Close any open expansion before transitioning
+    setOpenExpansionId(null);
+    // Small delay to let expansion close animation play
+    setTimeout(() => {
+      onViewChange(prompt);
+    }, 100);
+  };
+
+  const handleCTAClick = () => {
+    // Close any open expansion before transitioning
+    setOpenExpansionId(null);
+    // Small delay to let expansion close animation play
+    setTimeout(() => {
+      onViewChange();
+    }, 100);
   };
 
   return (
@@ -50,7 +64,7 @@ export default function ResumeView({ data, onViewChange }: ResumeViewProps) {
       <ResumeHeader
         name={data.name}
         contact={data.contact}
-        onCTAClick={() => onViewChange()}
+        onCTAClick={handleCTAClick}
       />
 
       <EducationSection education={data.education} />
@@ -73,7 +87,7 @@ export default function ResumeView({ data, onViewChange }: ResumeViewProps) {
       {expansionCount >= 2 && (
         <div className="text-center mt-6 p-4 bg-blue-50 rounded">
           <button
-            onClick={() => onViewChange()}
+            onClick={handleCTAClick}
             className="text-accent hover:underline font-medium"
           >
             Want to go deeper? Start a conversation →
@@ -81,7 +95,7 @@ export default function ResumeView({ data, onViewChange }: ResumeViewProps) {
         </div>
       )}
 
-      <BottomCTA onClick={() => onViewChange()} />
+      <BottomCTA onClick={handleCTAClick} />
     </div>
   );
 }
