@@ -33,7 +33,11 @@ export default function Page({
         {view === 'resume' ? (
           <motion.div
             key="resume"
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.5, ease: 'easeOut' },
+            }}
             exit={{
               opacity: 0,
               transition: { duration: 0.3, ease: 'easeInOut' },
@@ -55,8 +59,7 @@ export default function Page({
             }}
             exit={{
               opacity: 0,
-              y: -20,
-              transition: { duration: 0.3, ease: 'easeInOut' },
+              transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
             }}
           >
             <ChatView
