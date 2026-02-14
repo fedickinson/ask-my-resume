@@ -20,10 +20,10 @@ export default function ExperienceSection({
   onBridgeClick,
 }: ExperienceSectionProps) {
   return (
-    <section className="mb-6">
+    <section className="mb-8">
       <SectionHeader title="PROFESSIONAL EXPERIENCE" />
       <LayoutGroup>
-        <div className="space-y-4">
+        <div className="space-y-6">
           {experience.map((exp) => {
             const expansion = expansions.find((e) => e.sectionId === exp.id);
             const isOpen = openExpansionId === exp.id;
@@ -31,19 +31,19 @@ export default function ExperienceSection({
             const contentId = `content-${exp.id}`;
 
             return (
-              <div key={exp.id} className="mb-5 pb-4 border-b border-gray-100 last:border-b-0">
-                <div className="mb-1">
+              <div key={exp.id} className="mb-6 pb-6 border-b border-gray-100 last:border-b-0">
+                <div className="mb-2">
                   <span className="font-black text-base tracking-tight">{exp.company}</span>
                 </div>
-                <div className="flex justify-between items-baseline mb-0.5">
+                <div className="flex justify-between items-baseline mb-1">
                   <span className="text-[13px] italic text-gray-700">{exp.title}</span>
                   <span className="text-[12px] text-gray-500 font-medium ml-4">{exp.dates}</span>
                 </div>
-                <div className="text-[12px] text-gray-500 mb-3">{exp.location}</div>
+                <div className="text-[12px] text-gray-500 mb-4">{exp.location}</div>
 
-                <ul className="list-none space-y-2.5 text-[13px]">
+                <ul className="list-none space-y-3 text-[13px]">
                   {exp.bullets.map((bullet) => (
-                    <li key={bullet.id} className="flex leading-relaxed">
+                    <li key={bullet.id} className="flex leading-loose">
                       <span className="mr-3 text-gray-400 shrink-0 font-bold">•</span>
                       <span className="text-gray-900">{bullet.text}</span>
                     </li>
