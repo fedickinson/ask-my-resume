@@ -13,28 +13,26 @@ export default function EducationSection({
       <SectionHeader title="EDUCATION" />
       <div className="space-y-3">
         {education.map((edu) => (
-          <div key={edu.id} className="mb-3">
-            <div className="flex justify-between items-start gap-4">
-              <span className="font-extrabold text-[15px]">{edu.institution}</span>
-              <span className="text-[13px] text-gray-500 shrink-0">{edu.location}</span>
+          <div key={edu.id} className="mb-4 pb-3 border-b border-gray-100 last:border-b-0">
+            <div className="mb-1">
+              <span className="font-black text-base tracking-tight">{edu.institution}</span>
             </div>
-            <div className="flex justify-between items-start text-[13px] mt-0.5 gap-4">
+            <div className="flex justify-between items-baseline text-[13px] mb-0.5">
               <div className="flex-1">
                 {edu.degree}
                 {edu.certificate && (
-                  <> – <span className="italic">{edu.certificate}</span></>
+                  <> – <span className="italic text-gray-700">{edu.certificate}</span></>
                 )}
               </div>
-              <span className="text-gray-500 shrink-0">{edu.graduationDate}</span>
+              <span className="text-[12px] text-gray-500 font-medium ml-4 shrink-0">{edu.graduationDate}</span>
             </div>
-            {edu.gpa && (
-              <div className="text-[13px] text-gray-600 mt-0.5">
-                GPA: {edu.gpa}
-              </div>
-            )}
+            <div className="text-[12px] text-gray-500 mb-2">
+              {edu.location}
+              {edu.gpa && <> • GPA: {edu.gpa}</>}
+            </div>
             {edu.coursework && (
-              <div className="text-[13px] text-gray-600 mt-1 leading-relaxed">
-                Relevant Coursework: {edu.coursework}
+              <div className="text-[12px] text-gray-600 leading-relaxed">
+                <span className="text-gray-500">Relevant Coursework:</span> {edu.coursework}
               </div>
             )}
           </div>

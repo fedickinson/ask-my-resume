@@ -31,21 +31,21 @@ export default function ExperienceSection({
             const contentId = `content-${exp.id}`;
 
             return (
-              <div key={exp.id} className="mb-4">
-                <div className="flex justify-between items-start gap-4">
-                  <div>
-                    <span className="font-extrabold text-[15px]">{exp.company}</span>
-                    <span className="text-gray-600"> – </span>
-                    <span className="italic">{exp.title}</span>
-                  </div>
-                  <span className="text-[13px] text-gray-500 shrink-0">{exp.dates}</span>
+              <div key={exp.id} className="mb-5 pb-4 border-b border-gray-100 last:border-b-0">
+                <div className="mb-1">
+                  <span className="font-black text-base tracking-tight">{exp.company}</span>
                 </div>
-                <div className="text-[13px] text-gray-500 mt-0.5 mb-2">{exp.location}</div>
-                <ul className="list-none space-y-2 text-[13px]">
+                <div className="flex justify-between items-baseline mb-0.5">
+                  <span className="text-[13px] italic text-gray-700">{exp.title}</span>
+                  <span className="text-[12px] text-gray-500 font-medium ml-4">{exp.dates}</span>
+                </div>
+                <div className="text-[12px] text-gray-500 mb-3">{exp.location}</div>
+
+                <ul className="list-none space-y-2.5 text-[13px]">
                   {exp.bullets.map((bullet) => (
                     <li key={bullet.id} className="flex leading-relaxed">
-                      <span className="mr-2.5 text-gray-400 shrink-0 mt-0.5">•</span>
-                      <span className="text-gray-800">{bullet.text}</span>
+                      <span className="mr-3 text-gray-400 shrink-0 font-bold">•</span>
+                      <span className="text-gray-900">{bullet.text}</span>
                     </li>
                   ))}
                 </ul>
