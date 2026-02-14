@@ -33,16 +33,18 @@ export default function ExperienceSection({
             return (
               <div key={exp.id}>
                 <div className="flex justify-between items-baseline">
-                  <span className="font-bold">
-                    {exp.company} – {exp.title}
-                  </span>
-                  <span className="text-sm text-gray-700">{exp.dates}</span>
+                  <div>
+                    <span className="font-bold text-base">{exp.company}</span>
+                    <span className="text-gray-700"> – </span>
+                    <span className="font-medium">{exp.title}</span>
+                  </div>
+                  <span className="text-sm text-gray-600 font-medium whitespace-nowrap ml-4">{exp.dates}</span>
                 </div>
-                <div className="text-sm text-gray-700 mb-1">{exp.location}</div>
-                <ul className="list-none space-y-1 text-sm">
+                <div className="text-sm text-gray-600 mt-0.5 mb-2">{exp.location}</div>
+                <ul className="list-none space-y-1.5 text-sm">
                   {exp.bullets.map((bullet) => (
-                    <li key={bullet.id} className="flex">
-                      <span className="mr-2">•</span>
+                    <li key={bullet.id} className="flex leading-relaxed">
+                      <span className="mr-2 text-gray-400">•</span>
                       <span className="text-gray-700">{bullet.text}</span>
                     </li>
                   ))}
