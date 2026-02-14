@@ -25,7 +25,7 @@ export default function ExpandableTrigger({
       id={triggerId}
       onClick={onClick}
       onKeyDown={handleKeyDown}
-      className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition-all duration-200 py-2 px-0 min-h-[44px] focus:outline-none focus:text-gray-900 border-none bg-transparent cursor-pointer w-full text-left"
+      className="flex items-center gap-2 text-sm text-blue-500/60 hover:text-blue-500 transition-all duration-200 py-1 px-0 min-h-[44px] focus:outline-none focus:text-blue-600 border-none bg-transparent cursor-pointer w-full text-left"
       aria-expanded={isOpen}
       aria-controls={contentId}
       aria-label={`${isOpen ? 'Collapse' : 'Expand'}: ${question}`}

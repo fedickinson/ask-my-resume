@@ -60,7 +60,7 @@ export default function ResumeView({ data, onViewChange }: ResumeViewProps) {
   };
 
   return (
-    <div className="max-w-[700px] mx-auto px-6 py-12">
+    <div className="max-w-[700px] mx-auto px-8 py-10">
       <ResumeHeader
         name={data.name}
         contact={data.contact}

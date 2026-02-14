@@ -9,30 +9,31 @@ export default function EducationSection({
   education,
 }: EducationSectionProps) {
   return (
-    <section className="mb-8">
+    <section className="mb-5">
       <SectionHeader title="EDUCATION" />
-      <div className="space-y-5">
+      <div className="space-y-3">
         {education.map((edu) => (
-          <div key={edu.id} className="mb-6 pb-5 border-b border-gray-100 last:border-b-0">
-            <div className="mb-2">
-              <span className="font-black text-base tracking-tight">{edu.institution}</span>
+          <div key={edu.id}>
+            {/* Line 1: Institution and Graduation Date */}
+            <div className="flex justify-between items-baseline">
+              <span className="font-semibold text-sm">{edu.institution}</span>
+              <span className="text-sm text-gray-500 ml-4">{edu.graduationDate}</span>
             </div>
-            <div className="flex justify-between items-baseline text-[13px] mb-1">
-              <div className="flex-1">
+            {/* Line 2: Degree/Certificate and Location/GPA */}
+            <div className="flex justify-between items-baseline">
+              <span className="text-sm text-gray-700">
                 {edu.degree}
-                {edu.certificate && (
-                  <> – <span className="italic text-gray-700">{edu.certificate}</span></>
-                )}
-              </div>
-              <span className="text-[12px] text-gray-500 font-medium ml-4 shrink-0">{edu.graduationDate}</span>
+                {edu.certificate && <> – <span className="italic">{edu.certificate}</span></>}
+              </span>
+              <span className="text-xs text-gray-500 ml-4">
+                {edu.location}
+                {edu.gpa && <> • GPA: {edu.gpa}</>}
+              </span>
             </div>
-            <div className="text-[12px] text-gray-500 mb-3">
-              {edu.location}
-              {edu.gpa && <> • GPA: {edu.gpa}</>}
-            </div>
+            {/* Line 3: Coursework */}
             {edu.coursework && (
-              <div className="text-[12px] text-gray-600 leading-loose">
-                <span className="text-gray-500">Relevant Coursework:</span> {edu.coursework}
+              <div className="text-sm text-gray-600 mt-0.5">
+                <span className="font-medium">Relevant Coursework:</span> {edu.coursework}
               </div>
             )}
           </div>

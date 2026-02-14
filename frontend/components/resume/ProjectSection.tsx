@@ -20,10 +20,10 @@ export default function ProjectSection({
   onBridgeClick,
 }: ProjectSectionProps) {
   return (
-    <section className="mb-8">
+    <section className="mb-5">
       <SectionHeader title="PROJECTS" />
       <LayoutGroup>
-        <div className="space-y-6">
+        <div className="space-y-4">
           {projects.map((project) => {
             const expansion = expansions.find(
               (e) => e.sectionId === project.id
@@ -33,22 +33,20 @@ export default function ProjectSection({
             const contentId = `content-${project.id}`;
 
             return (
-              <div key={project.id} className="mb-6 pb-6 border-b border-gray-100 last:border-b-0">
-                <div className="mb-2">
-                  <span className="font-black text-base tracking-tight">{project.name}</span>
+              <div key={project.id}>
+                {/* Line 1: Project Name + Dates on right */}
+                <div className="flex justify-between items-baseline">
+                  <span className="font-semibold text-sm">{project.name}</span>
+                  <span className="text-sm text-gray-500 whitespace-nowrap ml-4">{project.dates}</span>
                 </div>
-                <div className="flex justify-between items-baseline mb-1">
-                  <div className="text-[13px] text-gray-600 italic flex-1">
-                    {project.description}
-                  </div>
-                  <span className="text-[12px] text-gray-500 font-medium ml-4 shrink-0">{project.dates}</span>
-                </div>
+                {/* Line 2: Description */}
+                <div className="text-xs text-gray-500 italic mb-1">{project.description}</div>
 
-                <ul className="list-none space-y-3 text-[13px] mt-4">
+                {/* Bullets */}
+                <ul className="list-disc list-outside ml-4 space-y-1">
                   {project.bullets.map((bullet) => (
-                    <li key={bullet.id} className="flex leading-loose">
-                      <span className="mr-3 text-gray-400 shrink-0 font-bold">•</span>
-                      <span className="text-gray-900">{bullet.text}</span>
+                    <li key={bullet.id} className="text-sm leading-relaxed text-gray-700 pl-0.5">
+                      {bullet.text}
                     </li>
                   ))}
                 </ul>
