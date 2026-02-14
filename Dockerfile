@@ -17,8 +17,8 @@ COPY content/ ./content/
 # Install Python dependencies
 RUN pip install --no-cache-dir -e .
 
-# Expose port
+# Expose port (Railway will set PORT env var)
 EXPOSE 8003
 
-# Run with uvicorn
-CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "8003"]
+# Run with uvicorn - use PORT env var if set, otherwise default to 8003
+CMD ["sh", "-c", "uvicorn src.api.main:app --host 0.0.0.0 --port ${PORT:-8003}"]
